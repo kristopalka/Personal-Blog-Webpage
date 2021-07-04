@@ -1,0 +1,33 @@
+<div class="card mb-3">
+    <div class="card-header">
+        Zarejestruj się
+    </div>
+    <div class="card-body">
+
+        {% if message == 'register.email' %}
+            <p style="font-weight: bold; color: red;">Podaj poprawny email</p>
+        {% elseif message == 'register.email_occupied' %}
+            <p style="font-weight: bold; color: red;">Podany email jest już zajęty</p>
+        {% elseif message == 'register.password' %}
+            <p style="font-weight: bold; color: red;">Hasło musi mieć przynajmniej 5 znaków</p>
+        {% elseif message == 'register.recaptcha' %}
+            <p style="font-weight: bold; color: red;">Uzupełnij reCAPTCHA</p>
+        {% elseif message == 'register.success' %}
+            <p style="font-weight: bold; color: green;">Pomyślnie zarejestrowano</p>
+        {% endif %}
+
+        <form action="register" method="POST">
+            <div class="form-group">
+                <input type="email" class="form-control" name="email" placeholder="email">
+            </div>
+            <div class="form-group">
+                <input type="password"  class="form-control" name="password" placeholder="password">
+            </div>
+            <div class="g-recaptcha" data-sitekey={{ recaptcha_public }}></div>
+            <br/>
+            <input class="btn btn-outline-success" type="submit" value="Zarejestruj">
+        </form>
+
+
+    </div>
+</div>

@@ -1,0 +1,95 @@
+<div class="card mb-3">
+  <div class="card-header">
+    Przykład: pobranie z bazy danych tylko osób o imionach Karina i Adam
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+      <tr id="wiersz-naglowka">
+        <th scope="col">ID</th>
+        <th scope="col">Imię</th>
+        <th scope="col">Nazwisko</th>
+      </tr>
+      </thead>
+      <tbody>
+        {% for row in table1 %}
+          <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.imie }}</td>
+            <td>{{ row.nazwisko }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!------------------------------------------------------------------------------------------------>
+
+<div class="card mb-3">
+  <div class="card-header">
+    Przykład: dane z bazy psują tabelę
+  </div>
+  <div class="card-body">
+    <table class="table table-striped">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Imię</th>
+        <th scope="col">Nazwisko</th>
+      </tr>
+      </thead>
+      <tbody>
+        {% for row in table2 %}
+          <tr>
+            <td>{{ row.id }}</td>
+            <td>{{ row.imie }}</td>
+            <td>{{ row.nazwisko }}</td>
+          </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!------------------------------------------------------------------------------------------------>
+
+<div class="card mb-3">
+  <div class="card-header">
+    Przykład: dodanie danych do tabeli za pomocą metody POST
+  </div>
+  <div class="card-body">
+
+    {% if addingAnswer == false %}
+      <p style="font-weight: bold; color: red;">Podane dane są nieprawidłowe.</p>
+    {% else %}
+
+    {% endif %}
+
+    <form action="index.php?page=main" method="POST">
+      <input type="text" name="imie" placeholder="Imie">
+      <input type="text" name="nazwisko" placeholder="Nazwisko">
+      <input type="submit" value="Dodaj">
+    </form>
+
+    <table class="table table-striped mt-3" id="moja-tabelka">
+      <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Imię</th>
+        <th scope="col">Nazwisko</th>
+      </tr>
+      </thead>
+      <tbody>
+      {% for row in table3 %}
+        <tr>
+          <td>{{ row.id|e }}</td>
+          <td>{{ row.imie|e }}</td>
+          <td>{{ row.nazwisko|e }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</div>
+

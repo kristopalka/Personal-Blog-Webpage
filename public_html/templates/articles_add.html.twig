@@ -1,0 +1,15 @@
+<h2>Dodawanie artykułu</h2>
+
+{% if message == 'article_add.empty_title' %}
+    <p style="font-weight: bold; color: red;">Wpisz tytuł</p>
+{% elseif message == 'article_add.too_long_title' %}
+    <p style="font-weight: bold; color: red;">Podano za długi tytuł</p>
+{% elseif message == 'article_add.empty_content' %}
+    <p style="font-weight: bold; color: red;">Uzupełnij zawartość</p>
+{% endif %}
+
+<form action="articles_add" method="POST">
+    <input class="form-control" type="text" name="title" style="width: 100%" placeholder="Tytuł artykułu"><br>
+    <input type="text" name="content" class="art-editor" style="height: 300px" placeholder="Zawartość"><br>
+    <input class="btn btn-outline-success" type="submit" value="Dodaj">
+</form>

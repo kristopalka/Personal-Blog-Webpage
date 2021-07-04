@@ -1,0 +1,7 @@
+{% if message == 'delete_article.you_cannot' %}
+    <p style="font-weight: bold; color: red;">Nie można usunąć artykułu</p>
+{% elseif message == 'delete_article.success' %}
+    <p style="font-weight: bold; color: green;">Usunięto artykuł</p>
+{% endif %}
+
+<button onclick="window.location.href='https://s040.labagh.pl/articles_list'" type="button" class="btn btn-outline-secondary">Wróć</button>

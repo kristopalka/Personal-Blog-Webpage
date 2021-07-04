@@ -1,0 +1,19 @@
+
+{% for row in articles %}
+    <div class="card mb-3">
+        <div class="card-header">
+            {{ row.title }}
+        </div>
+        <div class="card-body">
+            {% set content_splited = row.content|slice(0,50) %}
+            {% autoescape false %}
+{#                {{ content_splited }}...#}
+            {% endautoescape %}
+            <button onclick="window.location.href='https://s040.labagh.pl/article?id={{ row.id }}'" type="button" class="btn btn-outline-secondary" >Czytaj więcej</button>
+            {% if row.is_owner == 'true' %}
+                <button onclick="window.location.href='https://s040.labagh.pl/edit_article?id={{ row.id }}'" type="button" class="btn btn-outline-secondary">Edytuj</button>
+                <button onclick="window.location.href='https://s040.labagh.pl/delete_article?id={{ row.id }}'" type="button" class="btn btn-outline-danger">Usuń</button>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}

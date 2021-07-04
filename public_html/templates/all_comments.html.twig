@@ -1,0 +1,16 @@
+
+<div class="alert alert-warning">
+    Tu możesz znaleźć komentarze ze wszystkich stron <b>s*.labagh.pl</b> które je zamieściły ;)
+</div>
+</div>
+
+{% for key, tab in tables %}
+    <div class="card mb-3">
+        <div class="card-header alert alert-dark">
+            {{ key }}
+        </div>
+        {% autoescape false %}
+            {{ tab }}
+        {% endautoescape %}
+    </div>
+{% endfor %}

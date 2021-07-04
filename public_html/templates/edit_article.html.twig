@@ -1,0 +1,27 @@
+{% if article_founded == false %}
+    <p style="font-weight: bold; color: red;">Nie znaleziono artykułu</p>
+{% elseif is_owner == true %}
+    <h2>Edycja artykułu</h2>
+
+    {% if message == 'edit_article.empty_title' %}
+        <p style="font-weight: bold; color: red;">Tytuł nie może być pusty</p>
+    {% elseif message == 'edit_article.too_long_title' %}
+        <p style="font-weight: bold; color: red;">Podano za długi tytuł</p>
+    {% elseif message == 'edit_article.empty_content' %}
+        <p style="font-weight: bold; color: red;">Zawartośc nie może być pusta</p>
+    {% elseif message == 'edit_article.error' %}
+        <p style="font-weight: bold; color: red;">Wystąpił neiznany błąd</p>
+    {% elseif message == 'edit_article.success' %}
+        <p style="font-weight: bold; color: green;">Zapisano</p>
+    {% endif %}
+
+    <form action="edit_article" method="POST">
+        <input name="id" type="hidden" value="{{ article.id }}">
+        <input class="form-control" type="text" name="title" style="width: 100%" placeholder="Tytuł artykułu" value="{{ article.title }}"><br>
+        <input type="text" name="content" class="art-editor" style="height: 300px" placeholder="Zawartość" value="{{ article.content }}"><br>
+        <button onclick="window.location.href='https://s040.labagh.pl/articles_list'" type="button" class="btn btn-outline-secondary">Anuluj</button>
+        <input class="btn btn-outline-success" type="submit" value="Zapisz">
+    </form>
+{% else %}
+    <p style="font-weight: bold; color: red;">Nie możesz edytować tego artykułu</p>
+{% endif %}

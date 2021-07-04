@@ -1,0 +1,21 @@
+{% if article_founded == true %}
+
+    <div class="card mb-3">
+        <div class="card-header">
+            {{ article.title }}
+        </div>
+        <div class="card-body">
+            {% autoescape false %}
+                {{ article.content }}
+            {% endautoescape %}
+            {% if is_owner == true %}
+                <br>
+                <button onclick="window.location.href='https://s040.labagh.pl/article_list'" type="button" class="btn btn-outline-secondary">Powrót</button>
+                <button onclick="window.location.href='https://s040.labagh.pl/edit_article?id={{ article.id }}'" type="button" class="btn btn-outline-secondary">Edytuj</button>
+                <button onclick="window.location.href='https://s040.labagh.pl/delete_article?id={{ article.id }}'" type="button" class="btn btn-outline-danger">Usuń</button>
+            {% endif %}
+        </div>
+    </div>
+{% else %}
+    <p style="font-weight: bold; color: red;">Nie znaleziono artykułu.</p>
+{% endif %}

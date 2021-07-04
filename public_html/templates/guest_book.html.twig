@@ -1,0 +1,80 @@
+
+
+
+<div class="alert alert-warning" role="alert">
+    Zebrał wszystkie opinie w jednym miejscu <a class="btn btn-danger" href="https://s040.labagh.pl/all_comments" role="button">Zobacz JAK</a>
+</div>
+
+<div class="card mb-3">
+    <div class="card-header">
+        Dodaj opinię
+    </div>
+    <div class="card-body">
+
+        {% if message == 'opinion.empty' %}
+            <p style="font-weight: bold; color: red;">Wpisz opinię</p>
+        {% elseif message == 'opinion.recaptcha' %}
+            <p style="font-weight: bold; color: red;">Uzupełnij reCAPTCHA</p>
+        {% elseif message == 'opinion.success' %}
+            <p style="font-weight: bold; color: green;">Dodano opinię</p>
+        {% endif %}
+
+        <form action="guest_book" method="POST">
+            <div class="g-recaptcha" data-sitekey={{ recaptcha_public }}></div>
+            <br/>
+            <textarea class="form-control" type="text" name="opinion" placeholder="Opinia" ></textarea>
+            <br>
+            <input class="btn btn-outline-success" type="submit" value="Dodaj">
+        </form>
+
+
+    </div>
+</div>
+
+
+<div class="card mb-3">
+    <div class="card-header">
+        Opinie o stronie
+    </div>
+    <div class="card-body">
+        <table class="table table-striped">
+            <thead>
+            <tr id="wiersz-naglowka">
+                <th scope="col">Data</th>
+                <th scope="col">Opinia</th>
+                <th></th>
+            </tr>
+            </thead>
+            <tbody>
+                {% for row in opinions %}
+                    <tr>
+                        <td>{{ row.created }}</td>
+                        <td>{{ row.opinion }}</td>
+                        <td>
+                            {% if row.can_delete == 'true' %}
+                                <a class="btn btn-danger deleting-buttons"
+                                   role="button"
+                                   id="{{ row.id }}"
+                                   onclick="clickOnButton(this.id)">Usuń</a>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    function clickOnButton(idToDelete) {
+        $.ajax({
+            url: "https://s040.labagh.pl/guest_book",
+            type: "POST",
+            data: {id: idToDelete},
+            success: function () {
+                // remove element, to prevent reloading page
+                $("#" + idToDelete).parent().parent().remove();
+            }
+        });
+    }
+</script>
