@@ -1,13 +1,12 @@
 # Personal-Blog-Webpage
-Webpage allows to register, login, add and edit articles for logged users, browse articles, leave a comment as guest, see online users and last articles.
-Set on clear PHP and twig, connect to database using HTTP request methods or REST API (python). 
-Frontend use HTML/CSS/JS, Bootstrap and JQuery.
+A responsible webpage that allows registering, login, add, and edit articles for logged users, browse articles, leave a comment as a guest, see online users, and last articles.
+Set on clear PHP and twig, connect to the database using HTTP request methods or REST API (python). 
+Frontend use HTML/CSS/JS, Bootstrap and jQuery.
 I also learned how to:
-- do friendly links using mod_rewrite module
-- do CRUD oprations on database
+- do friendly links using the mod_rewrite module
+- do CRUD operations on database
 - set up reCAPTCHA on my website
-- set up WYSIWYG editor
-
+- set up the WYSIWYG editor
 
 ---
 
