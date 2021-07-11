@@ -8,7 +8,6 @@ I also learned how to:
 - set up reCAPTCHA on my website
 - set up the WYSIWYG editor
 
----
 
 ## Screenshots
 
